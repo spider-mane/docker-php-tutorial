@@ -1,8 +1,7 @@
 services:
   # nginx
   web:
-    build:
-      dockerfile: ./nginx/Dockerfile
+    image: nginx:latest
     ports:
       - 80:80
     volumes:
@@ -12,10 +11,20 @@ services:
   app:
     build:
       dockerfile: ./php/Dockerfile
+    volumes:
+      - ./app:/var/www/html
+    environment:
+      MYSQL_HOST: db
+      MYSQL_PORT: 3306
+      MYSQL_PASSWORD: secret
+      MYSQL_DATABASE: docker-php
+      MYSQL_USER: user
 
   # mysql
   db:
     image: mysql:8.0
+    ports:
+      - 3306:3306
     volumes:
       - mysqldata:/var/lib/mysql 
     restart: unless-stopped
