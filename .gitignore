@@ -1,2 +1,3 @@
-.vscodegs
+.idea
+.vscode
 vendor/

@@ -3,6 +3,7 @@ services:
   web:
     build:
       dockerfile: ./nginx/Dockerfile
+      target: app
     ports:
       - 80:80
     volumes:
