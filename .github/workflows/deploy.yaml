@@ -16,6 +16,6 @@ jobs:
         run: composer test
       - run: docker build --target app -t spidermane/php-composer:1.1 -f ./php/Dockerfile .
       - run: docker build -t spidermane/nginx-php:1.0 -f ./nginx/Dockerfile .
-      - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -P ${{ secrets.DOCKER_PASSWORD }}
+      - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - run: docker push spidermane/php-composer:1.1
       - run: docker push spidermane/nginx-php:1.0
